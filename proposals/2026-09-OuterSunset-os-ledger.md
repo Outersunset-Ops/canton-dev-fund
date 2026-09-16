@@ -1,10 +1,15 @@
 ## Development Fund Proposal
 
-**Author:** Outer Sunset (outersunset.io) — Long Do
+**Organization:** Outer Sunset (outersunset.io)
+**Author / Primary Contact:** Long Do
 **Status:** Draft
 **Created:** 2026-09-10
+**Proposal Type:** Individual Initiative
+**RFP / Roadmap Area:** N/A
 **Label:** regulatory-compliance
-**Champion:** Yiannis Varelis, Five North
+**Champion:** Yiannis Varelis
+**Total Funding Request:** 10,300,000 CC (first 12 months)
+**Project Duration:** 4 months delivery, followed by a 12 month service and maintenance term
 
 ---
 
@@ -36,7 +41,7 @@ Any organization may self-host the full stack with no dependency on Outer Sunset
 
 ![Bookkeeper dashboard](./2026-09-OuterSunset-os-ledger-dashboard.png)
 
-**Caption:** OS Ledger bookkeeper dashboard on a live MainNet deployment — ingester health, period totals, and uncategorized count.
+**Caption:** OS Ledger bookkeeper dashboard showing ingester health, period totals, uncategorized count and registered wallets. Deployment identity is redacted and the figures shown are test data.
 
 **Managed service.** Outer Sunset operates OS Ledger as a managed service for Canton organizations: one isolated deployment per client (own ingester, own database, own poster), connected through a client-issued, revocable, read-only credential on whitelisted IPs, with audit packages held by the client. The service is a first-class deliverable of this proposal, not a side business:
 
@@ -58,7 +63,7 @@ Give every organization operating on Canton an open, verifiable way to produce a
 
 ![Canton reference chart of accounts](./2026-09-OuterSunset-os-ledger-chart-of-accounts.png)
 
-**Caption:** The Canton reference chart of accounts as configured in the application, with per-category usage counts.
+**Caption:** The Canton reference chart of accounts as configured in the application, with per-category usage counts. Deployment identity is redacted.
 
 *Design note:* the original design read from PQS. During Phase 0 the vendor PQS Scribe failed against a Canton 3.5.1 ingress in production (UNAVAILABLE, isolated to Scribe's HTTP/2 client behavior) while grpc-js succeeded, so the ingester talks to the Ledger API directly. A PQS-backed read path is added in M5.
 

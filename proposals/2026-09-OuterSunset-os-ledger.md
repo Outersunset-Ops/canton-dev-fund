@@ -4,7 +4,7 @@
 **Status:** Draft
 **Created:** 2026-09-10
 **Label:** regulatory-compliance
-**Champion:** 
+**Champion:** Yiannis Varelis, Five North
 
 ---
 

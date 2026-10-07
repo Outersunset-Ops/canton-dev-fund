@@ -7,7 +7,7 @@
 **Proposal Type:** RFP-aligned proposal
 **RFP / Roadmap Area:** RFP 27, Security Monitoring, Auditability and Evidence (primary). RFP 20, Indexers (secondary). Roadmap area: Security, Assurance & Incident Readiness.
 **Label:** regulatory-compliance
-**Champion:** `Needs Champion`
+**Champion:** Yiannis Varelis, Five North (@zeroknowledger)
 **Total Funding Request:** 10,300,000 CC (first 12 months)
 **Project Duration:** 4 months delivery, followed by a 12 month service and maintenance term
 

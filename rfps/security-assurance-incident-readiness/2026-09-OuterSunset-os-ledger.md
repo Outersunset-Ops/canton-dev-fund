@@ -325,6 +325,17 @@ Every party that earns or spends Canton Coin has an accounting problem, and toda
 
 Two organizations run OS Ledger in production today, including a Super Validator. The gap between that and ecosystem-wide use is licensing, self-hostability, period-level attestation, and GL integration — exactly what this grant funds. We target 8 organizations live by end of 2026 and 20+ by the end of the first service year, across self-hosted and managed deployments.
 
+## Demand
+
+Outer Sunset has secured contracts or in the business development stage for multiple Canton Projects including:
+
+- Temple
+- 5North
+- Loop Technologies
+- MPCH
+- Bitsafe
+- Send
+
 ## Rationale
 
 **Why fund a stack with existing production users.** The engine exists because two clients funded their own deployments. Open-sourcing it turns those clients' investment into the ecosystem's, but only if the codebase is generalized, relicensed, and maintained — none of which a two-client commercial engagement pays for. The Foundation gets a proven, running system rather than a plan.

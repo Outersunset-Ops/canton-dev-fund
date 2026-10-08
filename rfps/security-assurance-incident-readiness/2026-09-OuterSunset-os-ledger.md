@@ -15,9 +15,9 @@
 
 ## Abstract
 
-Every validator operator, app provider, and Super Validator on Canton earns Canton Coin and pays network fees every round, yet none of them can close their books without a CSV export, a spreadsheet, and one person who knows how the formulas work. There is no open, purpose-built way to turn Canton ledger activity into double-entry journal entries, a controlled month-end close, and an audit trail that traces every reported number back to an on-chain transaction.
+Every validator operator, app provider, and Super Validator on Canton earns Canton Coin and pays network fees every round, yet none of them can close their books without an engineer who understands Canton Network transactions and how to read them, CSV export, a spreadsheet, and one person who knows how the formulas work. The tools available for current organizations are not tailor made for Canton Network, they are general blockchain applications and are extremely cost ineffective. OS Ledger plans to integrate at a much lower sustainable cost basis, but also scaling to heavy transaction volume enterprises at much more competitive rates. There is no open, purpose-built way to turn Canton ledger activity into double-entry journal entries, a controlled month-end close, and an audit trail that traces every reported number back to an on-chain transaction.
 
-OS Ledger is a finance-close stack for Canton. It is in production against a Super Validator's live validator: a read-only Ledger API ingester, a categorization rule engine, double-entry journal generation, sign-aware reconciliation against the active contract set, a maker-checker approval workflow, a period-close gate, a bookkeeper web application, and an on-ledger poster that commits each approved journal entry as an OSLedger:JournalEntry Daml contract. Two Canton organizations are using it in production today, with one Super Validator (Five North) as the anchor deployment.
+OS Ledger is a finance-close stack for Canton. It is in production against a Super Validator's live validator: a read-only Ledger API ingester, a categorization rule engine, double-entry journal generation, sign-aware reconciliation against the active contract set, a maker-checker approval workflow, a period-close gate, a bookkeeper web application, and an on-ledger poster that commits each approved journal entry as an OSLedger:JournalEntry Daml contract. Two Canton organizations are underway to using it in production today, with one Super Validator (Five North) as the anchor deployment with paid contracts signed for when the application is complete.
 
 This proposal asks the Foundation to fund two things. First, **releasing the stack as open source under Apache 2.0**, hardening it for self-hosted deployment, and completing the remaining pieces (period-level on-ledger attestation with an independent verifier, GL exporters, audit packages that survive system shutdown). Second, **operating OS Ledger as a managed service for the Canton ecosystem**: Outer Sunset runs dedicated, isolated deployments for validator operators, app providers, and SVs that do not want to run finance infrastructure themselves, with the Foundation's maintenance funding partially offsetting the hosting cost so that onboarding is free or low-cost during the subsidized term. Delivery completes with the open-source release by 15 November 2026, followed by an adoption-gated milestone and an annual service and maintenance commitment.
 
@@ -327,14 +327,17 @@ Two organizations run OS Ledger in production today, including a Super Validator
 
 ## Demand
 
-Outer Sunset has secured contracts or in the business development stage for multiple Canton Projects including:
+Within two months, during the initial build phase, OS Ledger has drawn commercial demand from across the Canton ecosystem.
 
-- Temple
-- 5North
-- Loop Technologies
-- MPCH
-- Bitsafe
-- Send
+- **Contracts:** Six Canton organizations, Five North, Temple, MPCH, Send, BitSafe and Loop Technologies, are (signed/in final contracting) for OS Ledger, spanning validator operators and application providers.
+
+- **Production use:** Five North runs OS Ledger as the anchor deployment, closing periods from live PQS data.
+
+- **Co-development with clients:** We're working directly with clients to find new use cases and extensions beyond the core close workflow, including forensic accounting with MPCH.
+
+- **Scale:** With Temple, one of the highest transaction-volume applications on Canton, we're extending OS Ledger to handle volume at that level.
+
+The grant funds open-sourcing the stack these clients already depend on, so any validator operator can close their books without a bespoke engagement.
 
 ## Rationale
 

@@ -9,17 +9,17 @@
 **Label:** regulatory-compliance
 **Champion:** Yiannis Varelis, Five North (@zeroknowledger)
 **Total Funding Request:** 10,300,000 CC (first 12 months)
-**Project Duration:** 4 months delivery, followed by a 12 month service and maintenance term
+**Project Duration:** 6 weeks delivery and adoption milestones at 4 and 9 months from grant approval, with a 12 month service and maintenance term from M5 acceptance
 
 ---
 
 ## Abstract
 
-Every validator operator, app provider, and Super Validator on Canton earns Canton Coin and pays network fees every round, yet none of them can close their books without an engineer who understands Canton Network transactions and how to read them, CSV export, a spreadsheet, and one person who knows how the formulas work. The tools available for current organizations are not tailor made for Canton Network, they are general blockchain applications and are extremely cost ineffective. OS Ledger plans to integrate at a much lower sustainable cost basis, but also scaling to heavy transaction volume enterprises at much more competitive rates. There is no open, purpose-built way to turn Canton ledger activity into double-entry journal entries, a controlled month-end close, and an audit trail that traces every reported number back to an on-chain transaction.
+Every validator operator, app provider, and Super Validator on Canton earns Canton Coin and pays network fees every round, yet none of them can close their books without an engineer who understands Canton Network transactions and how to read them, CSV export, a spreadsheet, and one person who knows how the formulas work. The tools available today are general-purpose blockchain accounting products not built for Canton, and they are costly for small operators and high-volume applications alike. There is no open, purpose-built way to turn Canton ledger activity into double-entry journal entries, a controlled month-end close, and an audit trail that traces every reported number back to an on-chain transaction.
 
 OS Ledger is a finance-close stack for Canton. It is in production against a Super Validator's live validator: a read-only Ledger API ingester, a categorization rule engine, double-entry journal generation, sign-aware reconciliation against the active contract set, a maker-checker approval workflow, a period-close gate, a bookkeeper web application, and an on-ledger poster that commits each approved journal entry as an OSLedger:JournalEntry Daml contract. Two Canton organizations are underway to using it in production today, with one Super Validator (Five North) as the anchor deployment with paid contracts signed for when the application is complete.
 
-This proposal asks the Foundation to fund two things. First, **releasing the stack as open source under Apache 2.0**, hardening it for self-hosted deployment, and completing the remaining pieces (period-level on-ledger attestation with an independent verifier, GL exporters, audit packages that survive system shutdown). Second, **operating OS Ledger as a managed service for the Canton ecosystem**: Outer Sunset runs dedicated, isolated deployments for validator operators, app providers, and SVs that do not want to run finance infrastructure themselves, with the Foundation's maintenance funding partially offsetting the hosting cost so that onboarding is free or low-cost during the subsidized term. Delivery completes with the open-source release by 15 November 2026, followed by an adoption-gated milestone and an annual service and maintenance commitment.
+This proposal asks the Foundation to fund **releasing the stack as open source under Apache 2.0**, hardening it for self-hosted deployment, completing the remaining pieces (period-level on-ledger attestation with an independent verifier, GL exporters, audit packages that survive system shutdown), and maintaining it. Delivery completes with the open-source release 6 weeks after grant approval, followed by adoption-gated milestones and an annual service and maintenance commitment.
 
 ## RFP Alignment
 
@@ -39,7 +39,7 @@ OS Ledger responds to **RFP 27, Security Monitoring, Auditability and Evidence**
 3. **If involved-party metadata is no longer public:** no impact. OS Ledger does not use Mediator or other protocol-level metadata.
 4. **Privacy and access:** access is scoped to the operator's own parties and a read-only credential. Nothing is published beyond the optional on-ledger attestations the operator chooses to create.
 
-## Licensing, Open-Source Posture, and Service Model
+## Licensing and Open-Source Posture
 
 All grant-funded software — including the existing codebase — is released under Apache 2.0 with full source on public GitHub under the outer-sunset organization:
 
@@ -55,19 +55,13 @@ All grant-funded software — including the existing codebase — is released un
 
 - Documentation: architecture, accounting treatment notes per Splice event type, discovery log, schema specification
 
-Any organization may self-host the full stack with no dependency on Outer Sunset. Self-hosted and managed deployments run the same code with the same features.
+Any organization may self-host the full stack with no dependency on Outer Sunset. Self-hosted and hosted deployments run the same code with the same features.
 
 ![Bookkeeper dashboard](./2026-09-OuterSunset-os-ledger-dashboard.png)
 
 **Caption:** OS Ledger bookkeeper dashboard showing ingester health, period totals, uncategorized count and registered wallets. Deployment identity is redacted and the figures shown are test data.
 
-**Managed service.** Outer Sunset operates OS Ledger as a managed service for Canton organizations: one isolated deployment per client (own ingester, own database, own poster), connected through a client-issued, revocable, read-only credential on whitelisted IPs, with audit packages held by the client. The service is a first-class deliverable of this proposal, not a side business:
-
-- During the subsidized term (12 months from M5 acceptance), managed onboarding and hosting are provided **at no charge to up to 15 Canton organizations** (validator operators, app providers, SVs), first come first served, with priority for organizations that have not previously run accounting infrastructure on Canton.
-
-- Beyond the 15 subsidized seats, or after the term, hosting is offered at **published cost-recovery pricing**, with the price list in the public repository. Any client may migrate to self-hosting at any time using the published manifests and their own audit packages.
-
-- Foundation maintenance funding covers the engineering upkeep of the open-source stack and the infrastructure for the subsidized seats. It does not cover bespoke integration, white-label work, or support contracts, which Outer Sunset sells separately.
+Should the Canton Foundation be interested in Outer Sunset operating a subsidized managed service for the ecosystem, we will consider submitting a subsequent grant for such a managed service.
 
 ## Specification
 
@@ -95,7 +89,7 @@ Give every organization operating on Canton an open, verifiable way to produce a
 
 **Export.** Journal and rollup CSV exports compatible with QuickBooks and other accounting software, plus QuickBooks IIF and Online journal import, Xero, and a generic GL CSV with account-code mapping (M5).
 
-**Operational model.** Single-tenant by construction, whether self-hosted or managed: own ingester, own database, own service per client. Access is a client-issued, revocable, read-only credential on whitelisted IPs. OS Ledger writes to the ledger only through the explicit attestation flow. Managed deployments are provisioned from the same os-ledger-deploy manifests any self-hoster uses.
+**Operational model.** Single-tenant by construction: own ingester, own database, own service per client. Access is a client-issued, revocable, read-only credential on whitelisted IPs. OS Ledger writes to the ledger only through the explicit attestation flow.
 
 ### 3. Architectural Alignment
 
@@ -115,11 +109,13 @@ None. OS Ledger is read-only against the participant and adds an optional Daml p
 
 ## Milestones and Deliverables
 
-Milestones 1–5 cover the engineering deliverables and complete with the open-source release on **15 November 2026**. Milestone 6 gates on ecosystem adoption after release. Maintenance is a separate annual commitment. Each milestone is verified by the committee against the public repository and on-ledger evidence.
+Milestones 1–5 cover the engineering deliverables and complete with the open-source release **6 weeks after grant approval**. Milestones 6 and 7 gate on ecosystem adoption after release. Maintenance is a separate annual commitment. Each milestone is verified by the committee against the public repository and on-ledger evidence.
+
+Estimated delivery dates are measured from grant approval. The deadline for each milestone is 2 months after its estimated delivery date.
 
 ### Milestone 1: Ledger API Ingester and Canton Accounting Event Model
 
-- **Estimated Delivery:** 15 October 2026
+- **Estimated Delivery:** 2 weeks after grant approval
 
 - **Focus:** Direct gRPC ingester with OAuth M2M auth; decode pass for Splice templates; normalized schema (7 clusters, Drizzle ORM, idempotent migrations); round number, amuletPrice, per-reward-type and per-output-fee columns; Amulet decay metadata; offset store and resumable streaming; ENTITY\_PARTIES party-scoping filter; Splice transaction-type coverage map and discovery log.
 
@@ -131,11 +127,11 @@ Milestones 1–5 cover the engineering deliverables and complete with the open-s
 
   - Ingester running continuously against a Super Validator's live validator on Canton 3.5.x, processing on the order of 7,000 journal entries per month, verifiable by committee against the deployment's ingester health metrics.
 
-- **Amount:** 1.25M CC
+- **Amount:** 0.75M CC
 
 ### Milestone 2: Journal Engine, Chart of Accounts, and Reconciliation
 
-- **Estimated Delivery:** 15 October 2026
+- **Estimated Delivery:** 2 weeks after grant approval
 
 - **Focus:** Priority-ordered categorization rule engine with suspense fallback; double-entry booking with USD and CC on every line and a source update ID; Canton reference chart of accounts (1000–6999); sign-aware ACS reconciliation with opening-balance and holding-fee adjustment proposals; in-process projector; journal and rollup CSV exports compatible with QuickBooks and other accounting software.
 
@@ -147,11 +143,11 @@ Milestones 1–5 cover the engineering deliverables and complete with the open-s
 
   - Full monthly periods booked for **2 organizations**, with automatic categorization covering ≥ 95% of transaction volume and the remainder routed to suspense.
 
-- **Amount:** 1.5M CC
+- **Amount:** 0.85M CC
 
 ### Milestone 3: Maker-Checker, Period Close, and Bookkeeper Application
 
-- **Estimated Delivery:** 31 October 2026
+- **Estimated Delivery:** 4 weeks after grant approval
 
 - **Focus:** Approval queue with database-enforced maker/checker separation; role-based authorization; period-close state with an uncategorized/draft gate; append-only audit log; export and audit-package history with file, configuration-snapshot, and audit-log hashes; web application (dashboard with ingester health, wallets, transactions with bulk categorization, categories, approvals, close, reports, audit log); Docker Compose and Kubernetes deployment options with runbooks.
 
@@ -163,11 +159,11 @@ Milestones 1–5 cover the engineering deliverables and complete with the open-s
 
   - Finance owners at **2 organizations** complete month-end close in the application, producing a Journal Entry Summary in which every line traces to its on-chain update ID.
 
-- **Amount:** 1.5M CC
+- **Amount:** 0.85M CC
 
 ### Milestone 4: On-Ledger Journal Attestation
 
-- **Estimated Delivery:** 31 October 2026
+- **Estimated Delivery:** 4 weeks after grant approval
 
 - **Focus:** OSLedger:JournalEntry Daml template; poster over JSON Ledger API v2 with cursor and receipt store, Node CLI and scheduled Worker runtimes, per-tenant deployment, posting kill switch, and manual-only MainNet deploys; mining-round CC/USD pricing on receipts via the validator wallet API; network-free test suite.
 
@@ -177,11 +173,11 @@ Milestones 1–5 cover the engineering deliverables and complete with the open-s
 
   - JournalEntry contracts committed on MainNet for at least **1 organization**, with contract IDs and receipts provided to the committee for verification against the ledger.
 
-- **Amount:** 1M CC
+- **Amount:** 0.6M CC
 
 ### Milestone 5: Period Attestation, Exporters, and Open-Source Release
 
-- **Estimated Delivery:** 15 November 2026
+- **Estimated Delivery:** 6 weeks after grant approval
 
 - **Focus:**
 
@@ -193,8 +189,6 @@ Milestones 1–5 cover the engineering deliverables and complete with the open-s
 
   - CPA-reviewed accounting treatment notes (reward recognition timing, Amulet decay, merge/split, two-phase transfers, unclaimed reward residue) published with the reference chart of accounts.
 
-  - Managed-service onboarding flow: technical discovery checklist, credential issuance guide, provisioning automation from the deploy manifests, and the published cost-recovery price list.
-
   - Third-party review of the Daml package and hashing implementation; critical/high findings remediated, report published under docs/audits/.
 
 - **Deliverables / Value Metrics:**
@@ -203,45 +197,55 @@ Milestones 1–5 cover the engineering deliverables and complete with the open-s
 
   - Period attestations committed on MainNet for the **2 current organizations**; verifier run end-to-end on a real closed period by someone outside Outer Sunset.
 
-  - At least **1 organization** imports an OS Ledger export into its production GL.
+- **Amount:** 1.2M CC
 
-  - At least **1 new organization** self-hosts from the published manifests with no Outer Sunset involvement beyond documentation.
+### Milestone 6: Ecosystem Adoption I
 
-  - At least **2 new organizations** onboarded to the managed service under the subsidized term.
+- **Estimated Delivery:** 4 months after grant approval
 
-- **Amount:** 2M CC
-
-### Milestone 6: Ecosystem Adoption
-
-- **Estimated Delivery:** 15 December 2026 (adoption evidence needs one or two close cycles after the November release)
-
-- **Scope:** Onboarding office hours, a validator-operator working session with the Foundation, case studies, and an adoption report.
+- **Scope:** Onboarding office hours, a validator-operator working session with the Foundation, and case studies.
 
 - **Deliverables / Value Metrics (evidenced on-ledger or by attestation; confidential-to-Foundation path available):**
 
-  - **Multiple independent organizations** have each closed at least one period on MainNet using OS Ledger, at least **2 self-hosting** and the remainder on the managed service.
+  - At least **4 independent organizations** have each closed at least one period on MainNet using the Apache 2.0 release.
+
+  - At least **1 organization** imports an OS Ledger export into its production GL.
 
   - **≥ 3 period attestations** committed on MainNet across those organizations.
 
+- **Amount:** 2.0M CC (pro rata at committee discretion)
+
+### Milestone 7: Ecosystem Adoption II
+
+- **Estimated Delivery:** 9 months after grant approval
+
+- **Scope:** Onboarding support, accounting-firm outreach, case studies, and an adoption report.
+
+- **Deliverables / Value Metrics (evidenced on-ledger or by attestation; confidential-to-Foundation path available):**
+
+  - At least **6 independent organizations** have each closed at least one period on MainNet using the Apache 2.0 release.
+
+  - At least **4** of those organizations have closed **3 consecutive monthly periods**.
+
   - At least **1 accounting or audit firm** has accepted an OS Ledger audit package as close evidence for a client.
 
-  - Published adoption report: organizations live, self-hosted vs. hosted, attestation count, exporter usage.
+  - **≥ 6 period attestations** committed on MainNet across those organizations.
 
-- **Amount:** 1.25M CC (released against the evidence above; pro rata at committee discretion if ≥ 5 organizations are live)
+  - Published adoption report: organizations live, self-hosted vs. hosted, retention, attestation count, exporter usage.
+
+- **Amount:** 2.25M CC (pro rata at committee discretion)
 
 ### Service and Maintenance: Annual, Paid Quarterly
 
-- **Term:** 12 months from M5 acceptance (Dec 2026 – Nov 2027), renewable annually by committee decision.
+- **Term:** 12 months from M5 acceptance, renewable annually by committee decision.
 
-- **Scope:** Each quarterly tranche releases only when the committee accepts **all three** of the following.
+- **Scope:** Each quarterly tranche has two components.
 
-  - *Upkeep bar:* compatibility with every Canton/Splice MainNet release that quarter (release tags); CVE triage within severity-based SLAs; CIP-0112 (Token Standard V2) decoder support kept current; docs, images, and manifests current; issue triage and community PR review.
+  - *Upkeep (0.25M CC):* compatibility with every Canton/Splice MainNet release that quarter (release tags); CVE triage within severity-based SLAs; CIP-0112 (Token Standard V2) decoder support kept current; docs, images, and manifests current; issue triage and community PR review; a public DevNet demo and a MainNet reference deployment; quarterly maintenance report.
 
-  - *Service bar:* subsidized managed seats operated to a published SLA (ingester lag, uptime, time-to-onboard); a public DevNet demo and a MainNet reference deployment available for any operator or the committee to verify the stack end-to-end; quarterly service report listing seats in use, seats available, and incidents.
+  - *Active use (0.20M CC):* at least **6 organizations** (Q1–Q2) and **10 organizations** (Q3–Q4) close a period on MainNet using OS Ledger during the quarter; quarterly adoption report.
 
-  - *Adoption tranche:* at least **3 additional independent organizations** closing periods on MainNet per quarter (self-hosted or managed), or 1 additional organization plus 1 new accounting firm accepting the audit package; quarterly adoption report.
-
-- **Amount:** 0.45M CC per quarter (1.8M CC per year). This covers engineering upkeep, the reference deployments, and infrastructure for the subsidized managed seats (compute, Postgres, poster runtime, monitoring, CI and image hosting, and Canton traffic fees for attestations). Bespoke integration, white-label work, and support contracts are excluded and sold separately.
+- **Amount:** 0.45M CC per quarter (1.8M CC per year). This covers engineering upkeep and the reference deployments (compute, Postgres, poster runtime, monitoring, CI and image hosting, and Canton traffic fees for attestations). Bespoke integration, white-label work, and support contracts are excluded.
 
 ## Acceptance Criteria
 
@@ -259,13 +263,11 @@ Project-specific conditions:
 
 - Milestones 1–4 are verified by the committee against the public repository, so acceptance of each is conditional on the corresponding code being released.
 
-- M5 and M6 each require at least one organization other than the two current clients using the output in production.
-
 - Independent third-party review of the Daml package and hash-chain implementation before M5 acceptance, report published.
 
-- Managed-service seats count toward adoption only when the organization has closed a real period on MainNet; provisioned-but-idle seats do not count.
+- An organization counts toward adoption only once it has closed a real period on MainNet.
 
-- No milestone is accepted on the basis of test coverage, feature completeness, or seat counts alone.
+- No milestone is accepted on the basis of test coverage or feature completeness alone.
 
 ## Funding
 
@@ -273,33 +275,34 @@ Project-specific conditions:
 
 ### Payment Breakdown
 
-| **Milestone**                                          | **Trigger**                 | **Amount (CC)** |
-| ------------------------------------------------------ | --------------------------- | --------------- |
-| M1: Ingester and Event Model                           | Committee acceptance        | 1.25M           |
-| M2: Journal Engine, CoA, Reconciliation                | Committee acceptance        | 1.5M            |
-| M3: Maker-Checker, Close, Application                  | Committee acceptance        | 1.5M            |
-| M4: On-Ledger Journal Attestation                      | Committee acceptance        | 1M              |
-| M5: Period Attestation, Exporters, Open-Source Release | Committee acceptance        | 2M              |
-| M6: Ecosystem Adoption                                 | Adoption evidence           | 1.25M           |
-| **Delivery total**                                     |                             | **8.5M**        |
-| Service & maintenance Q1 (Dec 2026 – Feb 2027)         | Upkeep + service + adoption | 0.45M           |
-| Service & maintenance Q2 (Mar – May 2027)              | Upkeep + service + adoption | 0.45M           |
-| Service & maintenance Q3 (Jun – Aug 2027)              | Upkeep + service + adoption | 0.45M           |
-| Service & maintenance Q4 (Sep – Nov 2027)              | Upkeep + service + adoption | 0.45M           |
-| **Service & maintenance total (year 1)**               |                             | **1.8M**        |
-| **Total, first 12 months**                             |                             | **10.3M**       |
+| **Milestone**                                          | **Estimated Delivery** | **Trigger**          | **Amount (CC)** |
+| ------------------------------------------------------ | ---------------------- | -------------------- | --------------- |
+| M1: Ingester and Event Model                           | 2 weeks                | Committee acceptance | 0.75M           |
+| M2: Journal Engine, CoA, Reconciliation                | 2 weeks                | Committee acceptance | 0.85M           |
+| M3: Maker-Checker, Close, Application                  | 4 weeks                | Committee acceptance | 0.85M           |
+| M4: On-Ledger Journal Attestation                      | 4 weeks                | Committee acceptance | 0.6M            |
+| M5: Period Attestation, Exporters, Open-Source Release | 6 weeks                | Committee acceptance | 1.2M            |
+| M6: Ecosystem Adoption I                               | 4 months               | Adoption evidence    | 2.0M            |
+| M7: Ecosystem Adoption II                              | 9 months               | Adoption evidence    | 2.25M           |
+| **Delivery total**                                     |                        |                      | **8.5M**        |
+| Service & maintenance Q1                               | Months 1–3 after M5    | Upkeep + active use  | 0.45M           |
+| Service & maintenance Q2                               | Months 4–6 after M5    | Upkeep + active use  | 0.45M           |
+| Service & maintenance Q3                               | Months 7–9 after M5    | Upkeep + active use  | 0.45M           |
+| Service & maintenance Q4                               | Months 10–12 after M5  | Upkeep + active use  | 0.45M           |
+| **Service & maintenance total (year 1)**               |                        |                      | **1.8M**        |
+| **Total, first 12 months**                             |                        |                      | **10.3M**       |
 
-M6 plus the adoption component of every service and maintenance tranche is contingent on verified ecosystem adoption beyond the current clients.
+M6, M7, and the active-use component of every service and maintenance tranche are contingent on verified ecosystem adoption.
 
 ### Volatility Stipulation
 
-Delivery completes within 4 months; the service and maintenance term runs 12 months. The grant is denominated in fixed Canton Coin and the service and maintenance portion will be re-evaluated at the 6-month mark, per program terms.
+Delivery completes within 6 weeks and adoption milestones within 9 months; the service and maintenance term runs 12 months. The grant is denominated in fixed Canton Coin and the service and maintenance portion will be re-evaluated at the 9-month mark.
 
 ## Co-Marketing
 
 Upon release, Outer Sunset will collaborate with the Foundation on:
 
-- Announcement coordination for the open-source release (M5) and the adoption report (M6).
+- Announcement coordination for the open-source release (M5) and the adoption reports (M6 and M7).
 
 - A technical blog series on accounting treatment of Canton activity (reward income, Amulet decay, merge/split, two-phase transfers, FMV), co-published with the Foundation.
 
@@ -307,7 +310,7 @@ Upon release, Outer Sunset will collaborate with the Foundation on:
 
 - Case studies with consenting operators and accounting firms, starting with the anchor Super Validator deployment.
 
-- Foundation-channel promotion of the subsidized managed seats so validator operators know the offer exists.
+- Foundation-channel promotion of OS Ledger and the Outer Sunset team.
 
 ## Motivation
 
@@ -323,7 +326,7 @@ Every party that earns or spends Canton Coin has an accounting problem, and toda
 
 - **Accounting and audit firms** serving the above, who currently have no standard evidence format for Canton activity.
 
-Two organizations run OS Ledger in production today, including a Super Validator. The gap between that and ecosystem-wide use is licensing, self-hostability, period-level attestation, and GL integration — exactly what this grant funds. We target 8 organizations live by end of 2026 and 20+ by the end of the first service year, across self-hosted and managed deployments.
+Two organizations run OS Ledger in production today, including a Super Validator. The gap between that and ecosystem-wide use is licensing, self-hostability, period-level attestation, and GL integration — exactly what this grant funds. We target 6 organizations live within 4 months of approval, 10 within 9 months, and 20+ by the end of the first service year.
 
 ## Demand
 
@@ -344,8 +347,6 @@ The grant funds open-sourcing the stack these clients already depend on, so any 
 **Why fund a stack with existing production users.** The engine exists because two clients funded their own deployments. Open-sourcing it turns those clients' investment into the ecosystem's, but only if the codebase is generalized, relicensed, and maintained — none of which a two-client commercial engagement pays for. The Foundation gets a proven, running system rather than a plan.
 
 **Why open-source the core rather than sell a hosted product only.** Accounting treatment for a new asset class is a public good: it only becomes trustworthy when the rules are readable, reviewable, and the same for everyone. Outer Sunset's commercial interest is in running and supporting the stack, not owning the rules.
-
-**Why fund a managed service alongside the open-source release.** Most validator operators are small teams without a finance engineer. An open-source engine they have to deploy, secure, and keep current with every Splice release will not get adopted by them; a managed deployment they connect with a read-only credential will. Subsidizing the first 15 seats gets the ecosystem past the cold-start problem, and because the code is open and the audit packages are client-held, no organization is locked in — they can move to self-hosting or another operator at any time. Cost-recovery pricing after the subsidized term keeps the service sustainable without a second grant.
 
 **Why direct Ledger API ingestion.** It was forced by a production incompatibility, but it also means no intermediate PQS deployment is required per operator, and a PQS-backed path is offered in M5 for operators who already run one.
 

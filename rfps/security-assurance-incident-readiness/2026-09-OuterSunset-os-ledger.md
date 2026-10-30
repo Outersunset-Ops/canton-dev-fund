@@ -143,7 +143,7 @@ Estimated delivery dates are measured from grant approval. The deadline for each
 
   - Full monthly periods booked for **2 organizations**, with automatic categorization covering ≥ 95% of transaction volume and the remainder routed to suspense.
 
-- **Amount:** 0.85M CC
+- **Amount:** 0.7M CC
 
 ### Milestone 3: Maker-Checker, Period Close, and Bookkeeper Application
 
@@ -159,7 +159,7 @@ Estimated delivery dates are measured from grant approval. The deadline for each
 
   - Finance owners at **2 organizations** complete month-end close in the application, producing a Journal Entry Summary in which every line traces to its on-chain update ID.
 
-- **Amount:** 0.85M CC
+- **Amount:** 0.7M CC
 
 ### Milestone 4: On-Ledger Journal Attestation
 
@@ -173,7 +173,7 @@ Estimated delivery dates are measured from grant approval. The deadline for each
 
   - JournalEntry contracts committed on MainNet for at least **1 organization**, with contract IDs and receipts provided to the committee for verification against the ledger.
 
-- **Amount:** 0.6M CC
+- **Amount:** 0.45M CC
 
 ### Milestone 5: Period Attestation, Exporters, and Open-Source Release
 
@@ -197,7 +197,7 @@ Estimated delivery dates are measured from grant approval. The deadline for each
 
   - Period attestations committed on MainNet for the **2 current organizations**; verifier run end-to-end on a real closed period by someone outside Outer Sunset.
 
-- **Amount:** 1.2M CC
+- **Amount:** 1.0M CC
 
 ### Milestone 6: Ecosystem Adoption I
 
@@ -213,7 +213,7 @@ Estimated delivery dates are measured from grant approval. The deadline for each
 
   - **≥ 3 period attestations** committed on MainNet across those organizations.
 
-- **Amount:** 2.0M CC (pro rata at committee discretion)
+- **Amount:** 2.3M CC (pro rata at committee discretion)
 
 ### Milestone 7: Ecosystem Adoption II
 
@@ -233,7 +233,7 @@ Estimated delivery dates are measured from grant approval. The deadline for each
 
   - Published adoption report: organizations live, self-hosted vs. hosted, retention, attestation count, exporter usage.
 
-- **Amount:** 2.25M CC (pro rata at committee discretion)
+- **Amount:** 2.6M CC (pro rata at committee discretion)
 
 ### Service and Maintenance: Annual, Paid Quarterly
 
@@ -278,12 +278,12 @@ Project-specific conditions:
 | **Milestone**                                          | **Estimated Delivery** | **Trigger**          | **Amount (CC)** |
 | ------------------------------------------------------ | ---------------------- | -------------------- | --------------- |
 | M1: Ingester and Event Model                           | 2 weeks                | Committee acceptance | 0.75M           |
-| M2: Journal Engine, CoA, Reconciliation                | 2 weeks                | Committee acceptance | 0.85M           |
-| M3: Maker-Checker, Close, Application                  | 4 weeks                | Committee acceptance | 0.85M           |
-| M4: On-Ledger Journal Attestation                      | 4 weeks                | Committee acceptance | 0.6M            |
-| M5: Period Attestation, Exporters, Open-Source Release | 6 weeks                | Committee acceptance | 1.2M            |
-| M6: Ecosystem Adoption I                               | 4 months               | Adoption evidence    | 2.0M            |
-| M7: Ecosystem Adoption II                              | 9 months               | Adoption evidence    | 2.25M           |
+| M2: Journal Engine, CoA, Reconciliation                | 2 weeks                | Committee acceptance | 0.7M            |
+| M3: Maker-Checker, Close, Application                  | 4 weeks                | Committee acceptance | 0.7M            |
+| M4: On-Ledger Journal Attestation                      | 4 weeks                | Committee acceptance | 0.45M           |
+| M5: Period Attestation, Exporters, Open-Source Release | 6 weeks                | Committee acceptance | 1.0M            |
+| M6: Ecosystem Adoption I                               | 4 months               | Adoption evidence    | 2.3M            |
+| M7: Ecosystem Adoption II                              | 9 months               | Adoption evidence    | 2.6M            |
 | **Delivery total**                                     |                        |                      | **8.5M**        |
 | Service & maintenance Q1                               | Months 1–3 after M5    | Upkeep + active use  | 0.45M           |
 | Service & maintenance Q2                               | Months 4–6 after M5    | Upkeep + active use  | 0.45M           |
